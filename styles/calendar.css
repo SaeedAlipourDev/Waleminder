@@ -1,4 +1,49 @@
-body {
-  font-family: Poppins, sans-serif;
+* {
+  box-sizing: border-box;
 }
 
+body {
+  font-family: Poppins, sans-serif;
+  margin: 0;
+}
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  background: white;
+  position: relative;
+}
+
+header {
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 48px;
+  font-weight: 500;
+}
+
+.clock span {
+  position: relative;
+  text-align: center;
+}
+
+.clock span::after {
+  font-size: 16px;
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#hours::after {
+  content: "HOURS";
+}
+#mins::after {
+  content: "MINS";
+}
+#sec::after {
+  content: "SEC";
+}
