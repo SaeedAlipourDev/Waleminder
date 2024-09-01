@@ -23,11 +23,20 @@
           <span>:</span>
           <span id="sec">00</span>
         </div>
-
-        <div class="weather">weather</div>
       </header>
+
+      <div class="weather">
+        <div class="weather-input">
+          <label class="city-selector-label">Select your city :</label>
+          <input type="text" id="city-input" class="city-input js-city-input" placeholder="Type to search...">
+          <ul id="city-list" class="city-list"></ul>
+        </div>
+        <button class="get-weather-button" id="get-weather">Get Weather</button>
+        <div id="weather-output"></div>
+      </div>
     </div>
 
     <script type="module" src="scripts/calendar.js"></script>
+    <script type="module" src="scripts/weather.js"></script>
   </body>
 </html>
