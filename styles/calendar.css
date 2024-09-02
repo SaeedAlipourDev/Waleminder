@@ -3,129 +3,160 @@
 }
 
 body {
-  font-family: Poppins, sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
+  padding: 0;
 }
 
 .hero {
   width: 100%;
   height: 100vh;
-  background: white;
-  position: relative;
-}
-
-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  font-size: 40px;
-  font-weight: 500;
-  margin-bottom: 16px;
   padding-top: 20px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
 }
 
 .today-date {
   background-color: white;
-  -webkit-backdrop-filter: blur(40px);
-  backdrop-filter: blur(5px);
-  padding: 16px 20px;
   border-radius: 30px;
+  font-weight: 500;
+  font-size: 48px;
+  padding: 20px;
 }
 
 .clock {
+  font-weight: 500;
+  font-size: 48px;
   background-color: white;
-  padding: 12px 20px 22px 20px;
   border-radius: 30px;
+  padding: 20px;
+  margin-bottom: 5px;
 }
 
 .clock span {
   position: relative;
-  text-align: center;
 }
 
 .clock span::after {
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 600;
   position: absolute;
   bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
-  font-weight: 500;
 }
 #hours::after {
-  content: "HOURS";
+  content: 'HOURS';
+  color: black !important;
 }
 #mins::after {
-  content: "MINS";
+  content: 'MINS';
+  color: black !important;
 }
 #sec::after {
-  content: "SEC";
+  content: 'SEC';
+  color: black !important;
 }
 
-.weather-input {
-  position: relative;
+.weather-section {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 30px;
+  padding: 20px;
 }
 
-.city-selector-label {
-  font-size: 22px;
+.weather {
   font-weight: 500;
-  margin-right: 8px;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .city-input {
-  font-size: 16px;
+  padding: 10px 16px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
   font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 30px;
-  border: none;
-  margin-right: 8px;
+  font-size: 18px;
 }
 
-.city-input:focus {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
-.get-weather-button {
-  border: none;
-  padding: 8px 16px;
-  background-color: black;
-  color: white;
-  border-radius: 30px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-right: 8px;
-}
-
-.get-weather-button:hover {
-  background-color: rgb(77, 77, 77);
+.city-input::placeholder {
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .city-list {
   list-style-type: none;
-  padding: 0 10px;
-  margin-top: 5px;
-  border: 3px solid white;
-  border-right: none;
-  border-radius: 30px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  font-size: 16px;
+  width: 189px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
   max-height: 200px;
   overflow-y: auto;
-  display: none;
-  background-color: white;
+  display: none; 
+  z-index: 1000;
+  margin-top: 8px;
+  border-top-left-radius: 10px;
+  transition: background-color 0.15s;
 }
 
 .city-list li {
-  border-radius: 30px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  font-weight: 500;
-  font-size: 16px;
   padding: 8px;
   cursor: pointer;
+  border-bottom: 1px solid rgb(154, 154, 154);
 }
 
 .city-list li:hover {
   background-color: #f0f0f0;
+}
+
+.get-weather-button {
+  font-weight: 600;
+  font-size: 20px;
+  padding: 8px 12px;
+  background-color: black;
+  color: white;
+  border: 3px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.15,
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.get-weather-button:hover {
+  opacity: 0.75;
+}
+
+.get-weather-button:active {
+  background-color: black !important;
+  border-color: black !important;
+}
+
+.weather-output {
+  height: fit-content;
+  font-weight: 500;
+  font-size: 28px;
+  color: black;
+  display: none;
+  background-color: white;
+  padding: 10px 15px;
+  margin-left: 15px;
+}
+
+.weather-output img {
+  width: 70px;
+  height: 70px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin: 0 10px;
 }
