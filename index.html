@@ -14,32 +14,38 @@
   </head>
   <body>
     <div class="hero js-hero">
-      <section class="date-section">
-        <div class="today-date js-today-date"></div>
-      </section>
-
-      <section class="clock-section">
-        <div class="clock js-clock">
-          <span id="hours" class="js-clock-color">00</span>
-          <span>:</span>
-          <span id="mins" class="js-clock-color">00</span>
-          <span>:</span>
-          <span id="sec" class="js-clock-color">00</span>
-        </div>
-      </section>
-
-      <section class="weather-section">
-        <div class="weather">
-          <label class="city-selector-label">Select your city</label>
-          <div class="weather-input">
-            <input type="text" id="city-input" class="city-input js-city-input" placeholder="Type to search..." autocomplete="off">
-            <ul id="city-list" class="city-list"></ul>
-          </div>
-          <button class="get-weather-button js-get-weather-button" id="get-weather">Get Weather</button>
-        </div>
+      <div class="left js-left">
+        <section class="date-section">
+          <div class="today-date js-today-date"></div>
+        </section>
   
-        <div id="weather-output" class="weather-output"></div>     
-      </section>
+        <section class="clock-section">
+          <div class="clock js-clock">
+            <span id="hours" class="js-clock-color">00</span>
+            <span>:</span>
+            <span id="mins" class="js-clock-color">00</span>
+            <span>:</span>
+            <span id="sec" class="js-clock-color">00</span>
+          </div>
+        </section>
+  
+        <section class="weather-section js-weather-section">
+          <div class="weather">
+            <label class="city-selector-label js-city-selector-label">Select your city</label>
+            <div class="weather-input">
+              <input type="text" id="city-input" class="city-input js-city-input" placeholder="Type to search..." autocomplete="off">
+              <ul id="city-list" class="city-list"></ul>
+            </div>
+            <button class="get-weather-button js-get-weather-button" id="get-weather">Get Weather</button>
+          </div>
+    
+          <div id="weather-output" class="weather-output"></div>     
+        </section>
+      </div>
+
+      <div class="right">
+
+      </div>
     </div>
 
     <script type="module" src="scripts/calendar.js"></script>

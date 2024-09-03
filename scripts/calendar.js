@@ -18,7 +18,11 @@ function setColorsBasedOnMonth() {
   const backgroundElement = document.querySelector('.js-hero');
   const dateElement = document.querySelector('.js-today-date');
   const clockNums = document.querySelectorAll('.js-clock-color');
+  const clock = document.querySelector('.js-clock');
   const getWeatherButton = document.querySelector('.js-get-weather-button');
+  const weatherLabel = document.querySelector('.js-city-selector-label');
+  const weatherSection = document.querySelector('.js-weather-section');
+  const left = document.querySelector('.js-left');
 
   const backgrounds = [
     null, // Placeholder for index 0
@@ -53,13 +57,25 @@ function setColorsBasedOnMonth() {
   ];
 
   backgroundElement.style.background = backgrounds[monthInDigits];
+  left.style.borderRight = `3px solid ${colors[monthInDigits]}`;
   dateElement.style.color = colors[monthInDigits];
   clockNums.forEach((num) => {
     num.style.color = colors[monthInDigits];
   });
+  dateElement.style.borderTop = `3px solid ${colors[monthInDigits]}`;
+  dateElement.style.borderBottom = `3px solid ${colors[monthInDigits]}`;
+  clock.style.borderTop = `3px solid ${colors[monthInDigits]}`;
+  clock.style.borderBottom = `3px solid ${colors[monthInDigits]}`;
+  weatherSection.style.borderTop = `3px solid ${colors[monthInDigits]}`;
+  weatherSection.style.borderBottom = `3px solid ${colors[monthInDigits]}`;
   getWeatherButton.style.backgroundColor = colors[monthInDigits];
   getWeatherButton.style.borderColor = colors[monthInDigits];
-  weatherOutput.style.borderLeft = `2px solid ${colors[monthInDigits]}`;
+  weatherOutput.style.borderTop = `3px solid ${colors[monthInDigits]}`;
+  weatherOutput.style.borderLeft = `3px solid ${colors[monthInDigits]}`;
+  weatherOutput.style.borderRight = `3px solid ${colors[monthInDigits]}`;
+  weatherLabel.style.borderRight = `3px solid ${colors[monthInDigits]}`;
+  weatherLabel.style.borderLeft = `3px solid ${colors[monthInDigits]}`;
+  weatherLabel.style.borderRadius = '10px';
 }
 
 function renderHeaderDate () {

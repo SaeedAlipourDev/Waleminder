@@ -38,7 +38,8 @@ function selectCity(city) {
 getWeatherButton.onclick = () => {
   cityList.style.display = 'none';
   weatherOutput.style.display = 'flex';
-  weatherOutput.style.alignItems = 'center';
+  weatherOutput.style.flexDirection = 'column';
+  weatherOutput.style.justifyContent = 'center';
   const selectedCity = cityInput.value;
   if (selectedCity) {
     fetchWeather(selectedCity);
@@ -71,9 +72,13 @@ async function fetchWeather(city) {
     iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
     iconHTML = `<img src="${iconUrl}" alt="Weather Icon">`
 
-    weatherOutput.innerHTML = `Current weather in&nbsp;<span>${city}</span>&nbsp;:&nbsp;<span>${weatherDescription}</span>${iconHTML} <span>${Math.round(temperature)}</span>°C`;
+    weatherOutput.innerHTML = `
+      <div>Current weather in&nbsp;<span>${city}</span>&nbsp;:</div>
+      <div class="weather-description"><span>${weatherDescription}</span>${iconHTML} <span>${Math.round(temperature)}</span>°C</div>
+    `;
 
     renderThemeColorsForWeatherOutput();
+    cityInput.value = '';
   } catch (error) {
     weatherOutput.innerHTML = `Error: ${error.message}`;
   }
@@ -82,8 +87,11 @@ async function fetchWeather(city) {
   renderThemeColorsForWeatherOutput();
   
   setTimeout(() => {
-    weatherOutput.innerHTML = `Current weather in&nbsp;<span>${city}</span>&nbsp;:&nbsp;<span>${weatherDescription}</span>${iconHTML} <span>${Math.round(temperature)}</span>°C`;
-    renderThemeColorsForWeatherOutput()
+    weatherOutput.innerHTML = `
+      <div>Current weather in&nbsp;<span>${city}</span>&nbsp;:</div>
+      <div class="weather-description"><span>${weatherDescription}</span>${iconHTML} <span>${Math.round(temperature)}</span>°C</div>
+    `;    
+    renderThemeColorsForWeatherOutput();
   }, 1000);
 }
 
