@@ -1,0 +1,67 @@
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  padding-left: 40px;
+}
+
+.calendar-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.prev-next-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.jump-to-container {
+  display: flex;
+  justify-content: center;
+}
+
+.reminder-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.reminder-section div h1 {
+  text-align: center;
+}
+
+.reminder-inputs-container {
+  width: 100%;
+}
+
+.event-inputs-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+}
+
+.event-date-and-title-input-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.event-description-container input {
+  width: 100%;
+}
+
+.reminders-container {
+  width: 100%;
+}
+
+.reminders {
+  display: flex;
+  flex-direction: column;
+}
+
+.reminders div {
+  display: flex;
+  align-items: center;
+}

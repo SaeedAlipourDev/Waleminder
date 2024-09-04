@@ -80,14 +80,21 @@
           <div>
             <h1>Reminder</h1>
           </div>
-          <div>
+          <div class="reminder-inputs-container">
             <h2>Add Event</h2>
-            <input type="date" class="event-date-input">
-            <input type="text" class="event-title-input" placeholder="Event Title">
-            <input type="date" class="event-description-input" placeholder="Event Description">
+            <div class="event-inputs-container">
+              <div class="event-date-and-title-input-container">
+                <input type="date" class="event-date-input">
+                <input type="text" class="event-title-input" placeholder="Event Title">
+              </div>
+              <div class="event-description-container">
+                <input type="text" class="event-description-input" placeholder="Event Description">
+              </div>
+            </div>
           </div>
-          <div>
+          <div class="reminders-container">
             <h3>Reminders</h3>
+            <div class="reminders"></div>
           </div>
         </section>
       </div>
