@@ -12,6 +12,10 @@
   flex-direction: column;
 }
 
+.calendar-section h1 {
+  text-align: center;
+}
+
 .prev-next-container {
   display: flex;
   justify-content: space-between;
