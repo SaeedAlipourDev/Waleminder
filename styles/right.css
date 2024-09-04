@@ -14,11 +14,31 @@
 
 .calendar-section h1 {
   text-align: center;
+  font-size: 32px;
 }
 
 .prev-next-container {
   display: flex;
   justify-content: space-between;
+}
+
+.prev-next-container button {
+  padding: 10px 12px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.prev-next-container button:hover {
+  opacity: 0.75;
+}
+
+.prev-next-container button:active {
+  background-color: black !important;
+  border-color: black !important;
 }
 
 .jump-to-container {

@@ -12,7 +12,7 @@ setInterval(() => {
   renderHeaderClock();
 }, 1000);
 
-function setColorsBasedOnMonth() {
+export function setColorsBasedOnMonth() {
   const today = dayjs();
   const monthInDigits = Number(today.format('M'));
   const backgroundElement = document.querySelector('.js-hero');
@@ -23,6 +23,8 @@ function setColorsBasedOnMonth() {
   const weatherLabel = document.querySelector('.js-city-selector-label');
   const weatherSection = document.querySelector('.js-weather-section');
   const left = document.querySelector('.js-left');
+  const calendarPrevButton = document.querySelector('.js-previous-button');
+  const calendarNextButton = document.querySelector('.js-next-button');
 
   const backgrounds = [
     null, // Placeholder for index 0
@@ -76,6 +78,10 @@ function setColorsBasedOnMonth() {
   weatherLabel.style.borderRight = `3px solid ${colors[monthInDigits]}`;
   weatherLabel.style.borderLeft = `3px solid ${colors[monthInDigits]}`;
   weatherLabel.style.borderRadius = '10px';
+  [calendarPrevButton, calendarNextButton].forEach((button) => {
+    button.style.border = `3px solid ${colors[monthInDigits]}`;
+    button.style.backgroundColor = `${colors[monthInDigits]}`;
+  });
 }
 
 function renderHeaderDate () {
