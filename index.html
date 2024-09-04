@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="styles/general.css">
     <link rel="stylesheet" href="styles/left.css">
+    <link rel="stylesheet" href="styles/right.css">
   </head>
   <body>
     <div class="hero js-hero">
@@ -45,11 +46,55 @@
       </div>
 
       <div class="right">
+        <section class="calendar-section">
+          <h1 class="month-and-year"></h1>
+          <div class="prev-next-container">
+            <button class="previous-button">&lt;</button>
+            <button class="next-button">&gt;</button>
+          </div>
+          <table class="calendar-table">
+            <thead class="table-header-container"></thead>
+            <tbody class="table-body-container"></tbody>           
+          </table>
+          <div class="jump-to-container">
+            <div>Jump to : </div>
+            <select class="month-dropdown">
+              <option value=1>Jan</option>
+              <option value=2>Feb</option>
+              <option value=3>Mar</option>
+              <option value=4>Apr</option>
+              <option value=5>May</option>
+              <option value=6>Jun</option>
+              <option value=7>Jul</option>
+              <option value=8>Aug</option>
+              <option value=9>sep</option>
+              <option value=10>Oct</option>
+              <option value=11>Nov</option>
+              <option value=12>Dec</option>
+            </select>
+            <select class="year-dropdown"></select>
+          </div>
+        </section>
 
+        <section class="reminder-section">
+          <div>
+            <h1>Reminder</h1>
+          </div>
+          <div>
+            <h2>Add Event</h2>
+            <input type="date" class="event-date-input">
+            <input type="text" class="event-title-input" placeholder="Event Title">
+            <input type="date" class="event-description-input" placeholder="Event Description">
+          </div>
+          <div>
+            <h3>Reminders</h3>
+          </div>
+        </section>
       </div>
     </div>
 
     <script type="module" src="scripts/theme-and-date.js"></script>
     <script type="module" src="scripts/weather.js"></script>
+    <script type="module" src="scripts/calendar.js"></script>
   </body>
 </html>
