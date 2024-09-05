@@ -41,6 +41,15 @@
   border-color: black !important;
 }
 
+.table-header-row th {
+  width: 14.285714285714285714285714285714%;
+}
+
+.table-body-container td {
+  text-align: center;
+  font-weight: 600;
+}
+
 .jump-to-container {
   display: flex;
   justify-content: center;
