@@ -47,9 +47,9 @@
 
       <div class="right">
         <section class="calendar-section">
-          <h1 class="month-and-year js-month-and-year"></h1>
           <div class="prev-next-container">
             <button class="previous-button js-previous-button">&lt;</button>
+            <h1 class="month-and-year js-month-and-year"></h1>
             <button class="next-button js-next-button">&gt;</button>
           </div>
           <table class="calendar-table">
@@ -59,22 +59,28 @@
             <tbody class="table-body-container"></tbody>           
           </table>
           <div class="jump-to-container">
-            <div>Jump to : </div>
-            <select class="month-dropdown">
-              <option value=1>Jan</option>
-              <option value=2>Feb</option>
-              <option value=3>Mar</option>
-              <option value=4>Apr</option>
-              <option value=5>May</option>
-              <option value=6>Jun</option>
-              <option value=7>Jul</option>
-              <option value=8>Aug</option>
-              <option value=9>sep</option>
-              <option value=10>Oct</option>
-              <option value=11>Nov</option>
-              <option value=12>Dec</option>
-            </select>
-            <select class="year-dropdown"></select>
+            <div class="jump-to-label">Jump to : </div>
+            <div class="month-dropdown">
+              <div class="month-selector">month &#x2BC6;</div>
+              <div class="month-dropdown-options">
+                <div id=0>Jan</div>
+                <div id=1>Feb</div>
+                <div id=2>Mar</div>
+                <div id=3>Apr</div>
+                <div id=4>May</div>
+                <div id=5>Jun</div>
+                <div id=6>Jul</div>
+                <div id=7>Aug</div>
+                <div id=8>Sep</div>
+                <div id=9>Oct</div>
+                <div id=10>Nov</div>
+                <div id=11>Dec</div>
+              </div>
+            </div>
+            <div class="year-dropdown">
+              <div class="year-selector">year &#x2BC6;</div>
+              <div class="year-dropdown-options"></div>
+            </div>
           </div>
         </section>
 

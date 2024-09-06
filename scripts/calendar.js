@@ -37,6 +37,10 @@ const leapYears = getLeapYears(1900, 3000);
 renderCalendarMonthAndYear();
 renderCalendarTableHeader()
 renderCalendarTableBody();
+makeMonthDropdownWork();
+makeYearDropdownWork();
+makeJumpToDropdownsInteractive();
+renderThemeColors();
 
 function fetchDate() {
   today = dayjs();
@@ -51,12 +55,14 @@ async function renderCalendarMonthAndYear() {
     today = today.subtract(1, 'month'); 
     updateCalendarMonthAndYear();
     renderCalendarTableBody();
+    renderThemeColors();
   });
   
   calendarNextButton.addEventListener('click', () => {
     today = today.add(1, 'month'); 
     updateCalendarMonthAndYear();
     renderCalendarTableBody();
+    renderThemeColors();
   });
 }
 
@@ -84,31 +90,28 @@ function getLeapYears(start, end) {
   return leapYears;
 }
 
-/* This is my own code. I couldn't continue so I asked GPT.
-function renderCalendarTableBody() {
-  let daysOfEachMonth = Object.values(monthDays);
-  leapYears.forEach((leapYear) => {
-    if (Number(today.format('YYYY')) === leapYear) {
-      daysOfEachMonth[1] + 1;
-    }
-  });
-
-  daysOfEachMonth.unshift(null);
-  const currentMonth = Number(today.format('M'));
-  const tableBody = document.querySelector('.table-body-container');
-
-  for (let i = 0; i < daysOfEachMonth.length; i++) {
-    if (i === currentMonth) {
-      const daysOfTheMonth = _.range(1, daysOfEachMonth[i] + 1);
-
-    }
-  }
-*/
-
 // GPT code:
 function renderCalendarTableBody() {
   const currentMonth = today.month(); // Get current month index (0-11)
   const currentYear = today.year(); // Get current year
+  // theme color variables:
+  const todayForColors = dayjs();
+  const monthInDigits = Number(todayForColors.format('M'));
+  const colors = [
+    null, // Placeholder for index 0
+    '#4682B4', // January
+    '#FF69B4', // February
+    '#3CB371', // March
+    '#FF4500', // April
+    '#FF1493', // May
+    '#00BFFF', // June
+    '#FF8C00', // July
+    '#FFA500', // August
+    '#CD853F', // September
+    '#FF4500', // October
+    '#A9A9A9', // November
+    '#4682B4'  // December
+  ];
 
   // Get number of days in the current month
   let daysInMonth = monthDays[dayjs(today).format('MMMM')];
@@ -149,8 +152,121 @@ function renderCalendarTableBody() {
       td.textContent = calendarDays[index] || ''; // Set text or leave empty
       
       tr.appendChild(td);
+
+      if (col === 0) {
+        td.style.color = `${colors[monthInDigits]}`;
+      }
     }
     
     tableBody.appendChild(tr);
   }
+}
+
+function makeMonthDropdownWork() {
+  const optionsContainer = document.querySelector('.month-dropdown-options');
+
+  document.querySelector('.month-selector')
+    .addEventListener('click', () => {
+      optionsContainer.style.display = optionsContainer.style.display === 'block' ? 'none' : 'block';
+    });
+
+  optionsContainer.querySelectorAll('div')
+    .forEach((option) => {
+      option.addEventListener('click', () => {
+        document.querySelector('.month-selector').innerHTML = option.innerHTML + ' &#x2BC6;';
+        optionsContainer.style.display = 'none';
+      });
+    });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.month-dropdown')) {
+      optionsContainer.style.display = 'none';
+    }
+  });
+}
+
+function makeYearDropdownWork() {
+  const optionsContainer = document.querySelector('.year-dropdown-options');
+  const years = _.range(3000, 1900-1);
+  
+  years.forEach((year) => {
+    optionsContainer.innerHTML += `
+      <div id=${year}>${year}</div>
+    `;
+  });
+
+  document.querySelector('.year-selector')
+    .addEventListener('click', () => {
+      optionsContainer.style.display = optionsContainer.style.display === 'block' ? 'none' : 'block';
+    });
+
+  optionsContainer.querySelectorAll('div')
+    .forEach((option) => {
+      option.addEventListener('click', () => {
+        document.querySelector('.year-selector').innerHTML = option.innerHTML + ' &#x2BC6;';
+        optionsContainer.style.display = 'none';
+      });
+    });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.year-dropdown')) {
+      optionsContainer.style.display = 'none';
+    }
+  });
+}
+
+function makeJumpToDropdownsInteractive() {
+  const monthDropdown = document.querySelector('.month-dropdown-options');
+  const yearDropdown = document.querySelector('.year-dropdown-options');
+
+  monthDropdown.querySelectorAll('div')
+    .forEach((option) => {
+      option.addEventListener('click', () => {
+        today = today.month(option.id);
+        updateCalendarMonthAndYear();
+        renderCalendarTableBody();
+        renderThemeColors();
+      });
+    });
+
+  yearDropdown.querySelectorAll('div')
+    .forEach((option) => {
+      option.addEventListener('click', () => {
+        today = today.year(option.id);
+        updateCalendarMonthAndYear();
+        renderCalendarTableBody();
+        renderThemeColors();
+      });
+    });
+}
+
+function renderThemeColors() {
+  const todayForColors = dayjs();
+  const monthInDigits = Number(todayForColors.format('M'));
+  const colors = [
+    null, // Placeholder for index 0
+    '#4682B4', // January
+    '#FF69B4', // February
+    '#3CB371', // March
+    '#FF4500', // April
+    '#FF1493', // May
+    '#00BFFF', // June
+    '#FF8C00', // July
+    '#FFA500', // August
+    '#CD853F', // September
+    '#FF4500', // October
+    '#A9A9A9', // November
+    '#4682B4'  // December
+  ];
+  const calendarTable = document.querySelector('table');
+  const calendarHeads = document.querySelectorAll('th');
+  const calendarCells = document.querySelectorAll('td');
+
+  calendarTable.style.border = `1px solid ${colors[monthInDigits]}`;
+  calendarHeads.forEach((head) => {
+    head.style.border = `1px solid ${colors[monthInDigits]}`;
+  });
+  calendarCells.forEach((cell) => {
+    cell.style.border = `1px solid ${colors[monthInDigits]}`;
+  });
 }
