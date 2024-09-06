@@ -79,7 +79,7 @@ table, th, td {
   justify-content: center;
   align-items: center;
   column-gap: 10px;
-  margin-top: 15px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -169,10 +169,12 @@ table, th, td {
 
 .reminder-section h2 {
   font-size: 24px;
+  margin-bottom: 5px;
 }
 
 .reminder-section h3 {
   font-size: 20px;
+  margin-top: 5px;
 }
 
 .reminder-inputs-container {
@@ -189,7 +191,7 @@ table, th, td {
 .event-inputs-container input {
   border-style: solid;
   border-radius: 6px;
-  padding: 2px 6px;
+  padding: 2px 8px;
   font-weight: 500;
   font-size: 16px;
 }
@@ -205,8 +207,32 @@ table, th, td {
   column-gap: 5px;
 }
 
+.event-description-container {
+  display: flex;
+  column-gap: 5px;
+}
+
 .event-description-container input {
   width: 100%;
+}
+
+.event-description-container button {
+  color: white;
+  font-weight: 700;
+  font-size: 18;
+  padding: 6px 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.event-description-container button:hover {
+  opacity: 0.75;
+}
+
+.event-description-container button:active {
+  background-color: black !important;
+  border-color: black !important;
 }
 
 .reminders-container {

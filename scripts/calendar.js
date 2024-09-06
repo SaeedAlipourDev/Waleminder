@@ -5,6 +5,7 @@ const calendarMonthAndYear = document.querySelector('.js-month-and-year');
 const calendarPreviousButton = document.querySelector('.js-previous-button');
 const calendarNextButton = document.querySelector('.js-next-button');
 let today;
+let selectedTableCell;
 
 const weekdays = [
   null,
@@ -35,7 +36,7 @@ const monthDays = {
 const leapYears = getLeapYears(1900, 3000);
 
 renderCalendarMonthAndYear();
-renderCalendarTableHeader()
+renderCalendarTableHeader();
 renderCalendarTableBody();
 makeMonthDropdownWork();
 makeYearDropdownWork();
@@ -152,14 +153,12 @@ function renderCalendarTableBody() {
       td.textContent = calendarDays[index] || ''; // Set text or leave empty
       
       tr.appendChild(td);
-
-      if (col === 0) {
-        td.style.color = `${colors[monthInDigits]}`;
-      }
     }
     
     tableBody.appendChild(tr);
   }
+
+  renderCellsColorsOnclick(colors[monthInDigits]);
 }
 
 function makeMonthDropdownWork() {
@@ -262,11 +261,51 @@ function renderThemeColors() {
   const calendarHeads = document.querySelectorAll('th');
   const calendarCells = document.querySelectorAll('td');
 
-  calendarTable.style.border = `1px solid ${colors[monthInDigits]}`;
+  calendarTable.style.border = `2px solid ${colors[monthInDigits]}`;
   calendarHeads.forEach((head) => {
-    head.style.border = `1px solid ${colors[monthInDigits]}`;
+    head.style.border = `2px solid ${colors[monthInDigits]}`;
   });
   calendarCells.forEach((cell) => {
-    cell.style.border = `1px solid ${colors[monthInDigits]}`;
+    cell.style.border = `2px solid ${colors[monthInDigits]}`;
+  });
+}
+
+function renderCellsColorsOnclick(color) {
+  const tableBody = document.querySelector('.table-body-container');
+  const rows = tableBody.querySelectorAll('tr');
+  const cells = tableBody.querySelectorAll('td');
+  const weekendCells = [];
+
+  rows.forEach((row) => {
+    row.children[0].style.color = color;
+    if (row.children[0].innerHTML !== '') {
+      weekendCells.push(row.children[0].innerHTML);
+    }
+  });
+
+  cells.forEach((cell) => {
+    if (cell.innerHTML !== '') {
+      cell.addEventListener('click', () => {        
+        if (!selectedTableCell) {
+          cell.style.color = 'white';
+          cell.style.backgroundColor = color;
+        } else {
+          cells.forEach((cell) => {
+            if (cell.innerHTML === selectedTableCell) {
+              if (weekendCells.includes(cell.innerHTML)) {
+                cell.style.color = color;
+              } else {
+                cell.style.color = 'black';
+              }
+              cell.style.backgroundColor = 'white';
+            }
+          });
+          selectedTableCell = null;
+          cell.style.color = 'white';
+          cell.style.backgroundColor = color;
+        }
+        selectedTableCell = cell.innerHTML;
+      });
+    }
   });
 }
