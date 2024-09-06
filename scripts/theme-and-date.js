@@ -25,6 +25,7 @@ export function setColorsBasedOnMonth() {
   const left = document.querySelector('.js-left');
   const calendarPrevButton = document.querySelector('.js-previous-button');
   const calendarNextButton = document.querySelector('.js-next-button');
+  const reminderLabel = document.querySelector('.reminder-label');
 
   const backgrounds = [
     null, // Placeholder for index 0
@@ -82,6 +83,8 @@ export function setColorsBasedOnMonth() {
     button.style.border = `3px solid ${colors[monthInDigits]}`;
     button.style.backgroundColor = `${colors[monthInDigits]}`;
   });
+  reminderLabel.style.borderLeft = `3px solid ${colors[monthInDigits]}`;
+  reminderLabel.style.borderRight = `3px solid ${colors[monthInDigits]}`;
 }
 
 function renderHeaderDate () {
