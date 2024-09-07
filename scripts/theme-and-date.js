@@ -29,6 +29,7 @@ export function setColorsBasedOnMonth() {
   const addEventButton = document.querySelector('.js-add-event-button'); 
   const calendarSection = document.querySelector('.js-calendar-section');
   const remindersection = document.querySelector('.js-reminder-section');
+  const eventInputsContainer = document.querySelector('.js-event-inputs-container');
 
   const backgrounds = [
     null, // Placeholder for index 0
@@ -94,6 +95,7 @@ export function setColorsBasedOnMonth() {
   calendarSection.style.borderBottom = `3px solid ${colors[monthInDigits]}`;
   remindersection.style.borderTop = `3px solid ${colors[monthInDigits]}`;
   remindersection.style.borderBottom = `3px solid ${colors[monthInDigits]}`;
+  eventInputsContainer.style.borderBottom = `3px solid ${colors[monthInDigits]}`;
 }
 
 function renderHeaderDate () {

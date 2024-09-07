@@ -56,7 +56,7 @@
             <thead class="table-header-container js-table-header-container">
               <tr class="table-header-row js-table-header-row"></tr>
             </thead>
-            <tbody class="table-body-container"></tbody>           
+            <tbody class="table-body-container js-table-body-container"></tbody>           
           </table>
           <div class="jump-to-container">
             <div class="jump-to-label">Jump to : </div>
@@ -90,20 +90,26 @@
           </div>
           <div class="reminder-inputs-container">
             <h2>Add Event</h2>
-            <div class="event-inputs-container">
+            <div class="event-inputs-container js-event-inputs-container">
               <div class="event-date-and-title-input-container">
-                <input type="date" class="event-date-input">
-                <input type="text" class="event-title-input" placeholder="Event Title">
+                <input type="date" class="event-date-input js-event-date-input">
+                <input type="text" class="event-title-input js-event-title-input" placeholder="Event Title">
               </div>
               <div class="event-description-container">
-                <input type="text" class="event-description-input" placeholder="Event Description">
+                <input type="text" class="event-description-input js-event-description-input" placeholder="Event Description">
                 <button class="add-event-button js-add-event-button">Add</button>
               </div>
             </div>
           </div>
           <div class="reminders-container">
-            <h3>Reminders</h3>
-            <div class="reminders"></div>
+            <div class="reminders-header">
+              <h3>Reminders</h3>
+              <div class="event-added-text js-event-added-text"></div>
+            </div>
+            <div class="reminders js-reminders">
+              To view reminders for a specific date, please select that date on the
+              calendar above the Reminder section. The relevant reminders will appear here.
+            </div>
           </div>
         </section>
       </div>
