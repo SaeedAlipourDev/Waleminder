@@ -1,6 +1,6 @@
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import 'https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js';
-import {renderNewRemindersOnAddButtonClicked, renderReminders, savedReminders} from './reminder.js';
+import {renderNewRemindersOnAddButtonClicked, renderReminders, savedReminders, makeDeleteButtonInteractive} from './reminder.js';
 
 const calendarMonthAndYear = document.querySelector('.js-month-and-year');
 const calendarPreviousButton = document.querySelector('.js-previous-button');
@@ -62,6 +62,7 @@ async function renderCalendarMonthAndYear() {
     renderReminders();
     renderNewRemindersOnAddButtonClicked();
     renderReminderCellsDots();
+    makeDeleteButtonInteractive();
   });
   
   calendarNextButton.addEventListener('click', () => {
@@ -72,6 +73,7 @@ async function renderCalendarMonthAndYear() {
     renderReminders();
     renderNewRemindersOnAddButtonClicked();
     renderReminderCellsDots();
+    makeDeleteButtonInteractive();
   });
 }
 
@@ -169,6 +171,7 @@ function renderCalendarTableBody() {
   renderCellsColorsOnclick(colors[monthInDigits]);
   renderReminders();
   renderNewRemindersOnAddButtonClicked();
+  makeDeleteButtonInteractive();
 }
 
 function makeMonthDropdownWork() {
@@ -238,6 +241,7 @@ function makeJumpToDropdownsInteractive() {
         renderReminders();
         renderNewRemindersOnAddButtonClicked();
         renderReminderCellsDots();
+        makeDeleteButtonInteractive();
       });
     });
 
@@ -251,6 +255,7 @@ function makeJumpToDropdownsInteractive() {
         renderReminders();
         renderNewRemindersOnAddButtonClicked();
         renderReminderCellsDots();
+        makeDeleteButtonInteractive();
       });
     });
 }
@@ -333,7 +338,7 @@ function renderCellsColorsOnclick(color) {
   });
 }
 
- function renderReminderCellsDots() {
+export function renderReminderCellsDots() {
   const calendarCells = document.querySelectorAll('td');
   const savedRemindersArray = [];
   savedReminders.forEach((reminder) => {

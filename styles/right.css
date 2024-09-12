@@ -285,13 +285,22 @@ table, th, td {
   cursor: pointer;
 }
 
+.reminder-delete-button:focus {
+  opacity: 0.75;
+}
+
+.reminder-delete-button:active {
+  background-color: black;
+  border-color: black;
+}
+
 .has-reminder {
   position: relative;
 }
 
 .has-reminder::after {
-  content: '•'; /* Dot symbol */
+  content: '•'; 
   position: absolute;
-  top: 5px; /* Adjust as needed */
-  right: 5px; /* Adjust as needed */
+  top: 5px; 
+  right: 5px; 
 }

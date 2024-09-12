@@ -1,4 +1,5 @@
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
+import {renderReminderCellsDots} from './calendar.js';
 
 export const savedReminders = JSON.parse(localStorage.getItem('savedReminders')) || [];
 
@@ -62,10 +63,13 @@ export function renderReminders() {
         if (remindersForDate.length > 0) {
           savedReminders.forEach((reminder) => {
             if (reminder.date === calendarDateFormatted) {
+              const reminderId = `${reminder.date+reminder.title+reminder.description}`;
               remindersHtml += `
                 <div class="reminder js-reminder">
                   <div class="reminder-text"><span>${reminder.title}</span>&nbsp;<span>&#x2010;</span>&nbsp;${reminder.description}&nbsp;<span>&#x2010;</span>&nbsp;${reminder.date}</div>
-                  <button class="reminder-delete-button">Delete</button>
+                  <button class="reminder-delete-button js-reminder-delete-button" data-button-id="${reminderId}">
+                    Delete
+                  </button>
                 </div>
               `
               reminders.innerHTML = remindersHtml;
@@ -92,17 +96,48 @@ export function renderNewRemindersOnAddButtonClicked() {
           const calendarDateFormatted = dayjs(calendarDate).format('YYYY-MM-DD');
           savedReminders.forEach((reminder) => {
             if (reminder.date === calendarDateFormatted) {
+              const reminderId = `${reminder.date+reminder.title+reminder.description}`;
               remindersHtml += `
                 <div class="reminder js-reminder">
                   <div class="reminder-text"><span>${reminder.title}</span>&nbsp;<span>&#x2010;</span>&nbsp;${reminder.description}&nbsp;<span>&#x2010;</span>&nbsp;${reminder.date}</div>
-                  <button class="reminder-delete-button">Delete</button>
+                  <button class="reminder-delete-button js-reminder-delete-button" data-button-id="${reminderId}">
+                    Delete
+                  </button>
                 </div>
               `
               reminders.innerHTML = remindersHtml;
+
+              renderReminderCellsDots();
             }
           });
         }
       });
+  });
+}
+
+export function makeDeleteButtonInteractive() {
+  const calendarBody = document.querySelector('.js-table-body-container');
+  const cells = calendarBody.querySelectorAll('td');
+
+  cells.forEach((cell) => {
+    cell.addEventListener('click', () => {
+      const deleteButtons = document.querySelectorAll('.js-reminder-delete-button');
+  
+      deleteButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          savedReminders.forEach((reminder) => {
+            if(button.dataset.buttonId === `${reminder.date+reminder.title+reminder.description}`) {
+              button.parentNode.remove();
+              renderReminders();
+              const index = savedReminders.indexOf(reminder);
+              savedReminders.splice(index, 1);
+              localStorage.setItem('savedReminders', JSON.stringify(savedReminders));
+              console.log(savedReminders);
+            }
+          });
+        });
+      });
+    });
   });
 }
 
