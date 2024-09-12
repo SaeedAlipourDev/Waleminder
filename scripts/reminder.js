@@ -1,6 +1,6 @@
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
-const savedReminders = JSON.parse(localStorage.getItem('savedReminders')) || [];
+export const savedReminders = JSON.parse(localStorage.getItem('savedReminders')) || [];
 
 const dateInput = document.querySelector('.js-event-date-input');
 const eventTitleInput = document.querySelector('.js-event-title-input');

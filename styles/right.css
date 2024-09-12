@@ -103,7 +103,6 @@ table, th, td {
   border-radius: 5px;
   padding: 1px 6px;
   cursor: pointer;
-  width: 85px;
 }
 
 .month-selector:hover,
@@ -284,4 +283,15 @@ table, th, td {
   border-radius: 5px;
   font-weight: 600;
   cursor: pointer;
+}
+
+.has-reminder {
+  position: relative;
+}
+
+.has-reminder::after {
+  content: '•'; /* Dot symbol */
+  position: absolute;
+  top: 5px; /* Adjust as needed */
+  right: 5px; /* Adjust as needed */
 }

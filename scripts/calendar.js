@@ -1,6 +1,6 @@
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import 'https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js';
-import {renderNewRemindersOnAddButtonClicked, renderReminders} from './reminder.js';
+import {renderNewRemindersOnAddButtonClicked, renderReminders, savedReminders} from './reminder.js';
 
 const calendarMonthAndYear = document.querySelector('.js-month-and-year');
 const calendarPreviousButton = document.querySelector('.js-previous-button');
@@ -42,6 +42,7 @@ renderCalendarTableBody();
 makeMonthDropdownWork();
 makeYearDropdownWork();
 makeJumpToDropdownsInteractive();
+renderReminderCellsDots();
 renderThemeColors();
 
 function fetchDate() {
@@ -60,6 +61,7 @@ async function renderCalendarMonthAndYear() {
     renderThemeColors();
     renderReminders();
     renderNewRemindersOnAddButtonClicked();
+    renderReminderCellsDots();
   });
   
   calendarNextButton.addEventListener('click', () => {
@@ -69,6 +71,7 @@ async function renderCalendarMonthAndYear() {
     renderThemeColors();
     renderReminders();
     renderNewRemindersOnAddButtonClicked();
+    renderReminderCellsDots();
   });
 }
 
@@ -234,6 +237,7 @@ function makeJumpToDropdownsInteractive() {
         renderThemeColors();
         renderReminders();
         renderNewRemindersOnAddButtonClicked();
+        renderReminderCellsDots();
       });
     });
 
@@ -246,6 +250,7 @@ function makeJumpToDropdownsInteractive() {
         renderThemeColors();
         renderReminders();
         renderNewRemindersOnAddButtonClicked();
+        renderReminderCellsDots();
       });
     });
 }
@@ -278,6 +283,13 @@ function renderThemeColors() {
   });
   calendarCells.forEach((cell) => {
     cell.style.border = `2px solid ${colors[monthInDigits]}`;
+    if(cell.classList.contains('has-reminder')) {
+      document.styleSheets[2].insertRule(
+        `.has-reminder::after {
+          color: ${colors[monthInDigits]};
+        }`
+      );
+    }
   });
 }
 
@@ -318,5 +330,21 @@ function renderCellsColorsOnclick(color) {
         selectedTableCell = cell.innerHTML;
       });
     }
+  });
+}
+
+ function renderReminderCellsDots() {
+  const calendarCells = document.querySelectorAll('td');
+  const savedRemindersArray = [];
+  savedReminders.forEach((reminder) => {
+    if(dayjs(reminder.date).format('MMMM YYYY') === dayjs(today).format('MMMM YYYY')
+        && !savedRemindersArray.includes(dayjs(reminder.date).format('D'))) {
+      savedRemindersArray.push(dayjs(reminder.date).format('D'));
+    }
+  });
+  calendarCells.forEach((cell) => {
+    if(savedRemindersArray.includes(cell.innerHTML)) {
+      cell.classList.add('has-reminder');
+    } 
   });
 }
