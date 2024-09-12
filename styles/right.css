@@ -103,6 +103,7 @@ table, th, td {
   border-radius: 5px;
   padding: 1px 6px;
   cursor: pointer;
+  width: 85px;
 }
 
 .month-selector:hover,
