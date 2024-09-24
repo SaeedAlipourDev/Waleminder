@@ -102,11 +102,9 @@ function getLeapYears(start, end) {
   return leapYears;
 }
 
-// GPT code:
 export function renderCalendarTableBody() {
-  const currentMonth = today.month(); // Get current month index (0-11)
-  const currentYear = today.year(); // Get current year
-  // theme color variables:
+  const currentMonth = today.month(); 
+  const currentYear = today.year(); 
   const todayForColors = dayjs();
   const monthInDigits = Number(todayForColors.format('M'));
   const colors = [
@@ -125,33 +123,26 @@ export function renderCalendarTableBody() {
     '#4682B4'  // December
   ];
 
-  // Get number of days in the current month
   let daysInMonth = monthDays[dayjs(today).format('MMMM')];
   
-  // Check for leap year if February
   if (currentMonth === 1 && leapYears.includes(currentYear)) {
-    daysInMonth += 1; // Add an extra day for leap year
+    daysInMonth += 1; 
   }
 
-  // Get the first day of the month (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
   const firstDayOfMonth = dayjs(today).startOf('month').day();
   
-  // Initialize an array to hold the calendar days
-  const calendarDays = Array(42).fill(null); // 6 weeks x 7 days
+  const calendarDays = Array(42).fill(null); 
 
-  // Fill in empty cells for days before the first day of the month
   for (let i = 0; i < firstDayOfMonth; i++) {
-    calendarDays[i] = ''; // Empty cells before the start of the month
+    calendarDays[i] = ''; 
   }
 
-  // Fill in the days of the month
   for (let day = 1; day <= daysInMonth; day++) {
     calendarDays[firstDayOfMonth + day - 1] = day;
   }
 
-  // Your existing code for rendering
   const tableBody = document.querySelector('.table-body-container');
-  tableBody.innerHTML = ''; // Clear previous content
+  tableBody.innerHTML = '';
 
   for (let row = 0; row < 6; row++) {
     const tr = document.createElement('tr');
@@ -160,8 +151,7 @@ export function renderCalendarTableBody() {
       const td = document.createElement('td');
       const index = row * 7 + col;
       
-      // Use your own method to set text or leave empty
-      td.textContent = calendarDays[index] || ''; // Set text or leave empty
+      td.textContent = calendarDays[index] || '';
       
       tr.appendChild(td);
     }
