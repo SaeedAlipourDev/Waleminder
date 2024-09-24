@@ -1,7 +1,15 @@
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
-import {renderReminderCellsDots} from './calendar.js';
+import {renderThemeColors} from './calendar.js';
 
-export const savedReminders = JSON.parse(localStorage.getItem('savedReminders')) || [];
+export let savedReminders;
+
+function loadFromStorage() {
+  savedReminders = JSON.parse(localStorage.getItem('savedReminders')) || [];
+}
+
+function saveToStorage() {
+  localStorage.setItem('savedReminders', JSON.stringify(savedReminders));
+}
 
 const dateInput = document.querySelector('.js-event-date-input');
 const eventTitleInput = document.querySelector('.js-event-title-input');
@@ -11,9 +19,14 @@ const reminders = document.querySelector('.js-reminders');
 const eventAddedText = document.querySelector('.js-event-added-text');
 let remindersHtml;
 
+loadFromStorage();
 saveReminders();
 renderReminders();
 renderNewRemindersOnAddButtonClicked();
+makeDeleteButtonInteractive();
+document.addEventListener('DOMContentLoaded', () => {
+  renderReminderCellsDots();
+});
 
 function saveReminders() {
   addEventButton.addEventListener('click', () => {
@@ -31,19 +44,22 @@ function saveReminders() {
         }
       });
     } else {
-      eventAddedText.innerHTML = 'Event Added Successfully!'
-      setTimeout(() => {
-        eventAddedText.innerHTML = '';
-      }, 5000);
       const eventObject = {
         "date": dateInput.value,
         "title": eventTitleInput.value,
         "description": eventDescriptionInput.value
       };
+      loadFromStorage();
       savedReminders.push(eventObject);
-      localStorage.setItem('savedReminders', JSON.stringify(savedReminders));
+      saveToStorage();
+      eventAddedText.innerHTML = 'Event Added Successfully!'
+      setTimeout(() => {
+        eventAddedText.innerHTML = '';
+      }, 5000);
       eventTitleInput.value = '';
       eventDescriptionInput.value = '';
+      loadFromStorage();
+      renderReminderCellsDots();
     } 
   });
 }
@@ -51,6 +67,7 @@ function saveReminders() {
 export function renderReminders() {
   const tableBody = document.querySelector('.js-table-body-container');
   const calendarMonthAndYear = document.querySelector('.js-month-and-year');
+  loadFromStorage();
   tableBody.querySelectorAll('td')
     .forEach((cell) => {
       cell.addEventListener('click', () => {
@@ -85,7 +102,9 @@ export function renderReminders() {
 export function renderNewRemindersOnAddButtonClicked() {
   const tableBody = document.querySelector('.js-table-body-container');
   const calendarMonthAndYear = document.querySelector('.js-month-and-year');
+
   addEventButton.addEventListener('click', () => {
+    loadFromStorage();
     tableBody.querySelectorAll('td')
       .forEach((cell) => {
         if (cell.style.color === 'white') {
@@ -106,8 +125,6 @@ export function renderNewRemindersOnAddButtonClicked() {
                 </div>
               `
               reminders.innerHTML = remindersHtml;
-
-              renderReminderCellsDots();
             }
           });
         }
@@ -125,14 +142,18 @@ export function makeDeleteButtonInteractive() {
   
       deleteButtons.forEach((button) => {
         button.addEventListener('click', () => {
+          loadFromStorage();
           savedReminders.forEach((reminder) => {
             if(button.dataset.buttonId === `${reminder.date+reminder.title+reminder.description}`) {
               button.parentNode.remove();
-              renderReminders();
               const index = savedReminders.indexOf(reminder);
               savedReminders.splice(index, 1);
-              localStorage.setItem('savedReminders', JSON.stringify(savedReminders));
+              saveToStorage();
+              loadFromStorage();
+              renderReminders();
+              renderReminderCellsDots();
               console.log(savedReminders);
+              makeDeleteButtonInteractive();
             }
           });
         });
@@ -142,3 +163,31 @@ export function makeDeleteButtonInteractive() {
 }
 
 console.log(savedReminders);
+
+export function renderReminderCellsDots() {
+  const calendarBody = document.querySelector('.js-table-body-container');
+  const cells = calendarBody.querySelectorAll('td');
+  const calendarMonthAndYear = document.querySelector('.js-month-and-year');
+  let remindersDates = [];
+  loadFromStorage();
+
+  savedReminders.forEach((reminder) => {
+    remindersDates.push(reminder.date);
+  });
+
+  cells.forEach((cell) => {
+    if (cell.innerHTML !== '') {
+      const day = cell.innerHTML;
+      const monthAndYear = calendarMonthAndYear.innerHTML;
+      const calendarDate = day + ' ' + monthAndYear;
+      const calendarDateFormatted = dayjs(calendarDate).format('YYYY-MM-DD');
+  
+      if (remindersDates.includes(calendarDateFormatted) && !cell.classList.contains('has-reminder')) {
+        cell.classList.add('has-reminder');
+        renderThemeColors();
+      } else if (cell.classList.contains('has-reminder') && !remindersDates.includes(calendarDateFormatted)) {
+        cell.classList.remove('has-reminder');
+      }
+    }
+  });
+}

@@ -1,6 +1,7 @@
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import 'https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js';
-import {renderNewRemindersOnAddButtonClicked, renderReminders, savedReminders, makeDeleteButtonInteractive} from './reminder.js';
+import {renderNewRemindersOnAddButtonClicked, renderReminders,
+  makeDeleteButtonInteractive, renderReminderCellsDots} from './reminder.js';
 
 const calendarMonthAndYear = document.querySelector('.js-month-and-year');
 const calendarPreviousButton = document.querySelector('.js-previous-button');
@@ -42,7 +43,7 @@ renderCalendarTableBody();
 makeMonthDropdownWork();
 makeYearDropdownWork();
 makeJumpToDropdownsInteractive();
-renderReminderCellsDots();
+makeDeleteButtonInteractive();
 renderThemeColors();
 
 function fetchDate() {
@@ -61,8 +62,8 @@ async function renderCalendarMonthAndYear() {
     renderThemeColors();
     renderReminders();
     renderNewRemindersOnAddButtonClicked();
-    renderReminderCellsDots();
     makeDeleteButtonInteractive();
+    renderReminderCellsDots();
   });
   
   calendarNextButton.addEventListener('click', () => {
@@ -72,8 +73,8 @@ async function renderCalendarMonthAndYear() {
     renderThemeColors();
     renderReminders();
     renderNewRemindersOnAddButtonClicked();
-    renderReminderCellsDots();
     makeDeleteButtonInteractive();
+    renderReminderCellsDots();
   });
 }
 
@@ -102,7 +103,7 @@ function getLeapYears(start, end) {
 }
 
 // GPT code:
-function renderCalendarTableBody() {
+export function renderCalendarTableBody() {
   const currentMonth = today.month(); // Get current month index (0-11)
   const currentYear = today.year(); // Get current year
   // theme color variables:
@@ -172,6 +173,7 @@ function renderCalendarTableBody() {
   renderReminders();
   renderNewRemindersOnAddButtonClicked();
   makeDeleteButtonInteractive();
+  renderReminderCellsDots();
 }
 
 function makeMonthDropdownWork() {
@@ -240,8 +242,8 @@ function makeJumpToDropdownsInteractive() {
         renderThemeColors();
         renderReminders();
         renderNewRemindersOnAddButtonClicked();
-        renderReminderCellsDots();
         makeDeleteButtonInteractive();
+        renderReminderCellsDots();
       });
     });
 
@@ -254,13 +256,13 @@ function makeJumpToDropdownsInteractive() {
         renderThemeColors();
         renderReminders();
         renderNewRemindersOnAddButtonClicked();
-        renderReminderCellsDots();
         makeDeleteButtonInteractive();
+        renderReminderCellsDots();
       });
     });
 }
 
-function renderThemeColors() {
+export function renderThemeColors() {
   const todayForColors = dayjs();
   const monthInDigits = Number(todayForColors.format('M'));
   const colors = [
@@ -335,21 +337,5 @@ function renderCellsColorsOnclick(color) {
         selectedTableCell = cell.innerHTML;
       });
     }
-  });
-}
-
-export function renderReminderCellsDots() {
-  const calendarCells = document.querySelectorAll('td');
-  const savedRemindersArray = [];
-  savedReminders.forEach((reminder) => {
-    if(dayjs(reminder.date).format('MMMM YYYY') === dayjs(today).format('MMMM YYYY')
-        && !savedRemindersArray.includes(dayjs(reminder.date).format('D'))) {
-      savedRemindersArray.push(dayjs(reminder.date).format('D'));
-    }
-  });
-  calendarCells.forEach((cell) => {
-    if(savedRemindersArray.includes(cell.innerHTML)) {
-      cell.classList.add('has-reminder');
-    } 
   });
 }
