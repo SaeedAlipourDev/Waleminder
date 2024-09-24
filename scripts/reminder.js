@@ -152,7 +152,6 @@ export function makeDeleteButtonInteractive() {
               loadFromStorage();
               renderReminders();
               renderReminderCellsDots();
-              console.log(savedReminders);
               makeDeleteButtonInteractive();
             }
           });
@@ -161,8 +160,6 @@ export function makeDeleteButtonInteractive() {
     });
   });
 }
-
-console.log(savedReminders);
 
 export function renderReminderCellsDots() {
   const calendarBody = document.querySelector('.js-table-body-container');
