@@ -256,7 +256,7 @@ table, th, td {
   text-align: justify;
   display: flex;
   flex-direction: column;
-  row-gap: 5px;
+  row-gap: 8px;
 }
 
 .reminder {

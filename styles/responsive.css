@@ -121,3 +121,142 @@
     row-gap: 5px;
   }
 }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600.02px) and (max-width: 768px) {
+  * {
+    font-size: 16px !important;
+  }
+
+  .hero {
+    grid-template-columns: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    padding: 30px 20px 30px 20px !important;
+  }
+
+  .left,
+  .right {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .left {
+    border: none !important;
+    row-gap: 10px;
+  }
+
+  .today-date {
+    font-size: 30px !important;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .clock {
+    padding: 15px 15px 20px 15px;
+  }
+
+  .clock span {
+    font-size: 40px !important;
+  }
+
+  .clock span::after {
+    font-size: 14px;
+  }
+
+  .weather {
+    padding-bottom: 10px;
+  }
+
+  .city-selector-label {
+    font-size: 22px !important;
+    border-radius: 8px !important;
+  }
+
+  .city-input {
+    padding: 4px 14px;
+    margin-top: 4px;
+    font-size: 18px !important;
+  }
+
+  .city-input::placeholder {
+    font-size: 18px !important;
+  }
+
+  .get-weather-button {
+    font-size: 16px !important;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 10px;
+  }
+
+  .weather-output,
+  .weather-output div,
+  .weather-output div span {
+    font-size: 18px !important;
+  }
+
+  .month-and-year {
+    font-size: 28px !important;
+  }
+
+  .prev-next-container button {
+    font-size: 32px !important;
+  }
+
+  th {
+    font-size: 20px !important;
+  }
+
+  td {
+    font-size: 18px !important;
+  }
+
+  .jump-to-container * {
+    font-size: 18px !important;
+  }
+
+  .reminder-section h2,
+  .reminder-section h3 {
+    font-size: 18px !important;
+  }
+
+  .reminder-label {
+    border-radius: 8px !important;
+    font-size: 22px !important;
+  }
+
+  .event-inputs-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-inputs-container * {
+    font-size: 16px !important;
+  }
+
+  .event-inputs-container input::placeholder {
+    font-size: 16px;
+  }
+
+  .event-date-and-title-input-container {
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 5px;
+  }
+
+  .event-added-text {
+    font-size: 16px !important;
+  }
+
+  .has-reminder::after {
+    top: 5px;
+    right: 5px;
+  }
+
+  .reminders * {
+    font-size: 16px !important;
+  }
+}
