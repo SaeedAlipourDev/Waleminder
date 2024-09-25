@@ -23,6 +23,7 @@
 .prev-next-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 15px;
   margin-top: 10px;
   width: 95%;
@@ -266,9 +267,8 @@ table, th, td {
 }
 
 .reminder-text {
-  display: flex;
-  align-items: center;
   font-weight: 500;
+  margin-right: 8px;
 }
 
 .reminder-text span {

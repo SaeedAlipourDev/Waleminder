@@ -1,0 +1,123 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  * {
+    font-size: 16px !important;
+  }
+
+  .hero {
+    grid-template-columns: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    padding: 30px 20px 30px 20px !important;
+  }
+
+  .left,
+  .right {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .left {
+    border: none !important;
+    row-gap: 10px;
+  }
+
+  .today-date {
+    font-size: 18px !important;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .clock {
+    padding: 15px 15px 20px 15px;
+  }
+
+  .clock span {
+    font-size: 28px !important;
+  }
+
+  .clock span::after {
+    font-size: 10px;
+  }
+
+  .weather {
+    padding-bottom: 10px;
+  }
+
+  .city-selector-label {
+    font-size: 18px !important;
+    border-radius: 8px !important;
+  }
+
+  .city-input {
+    padding: 3px 14px;
+    margin-top: 4px;
+  }
+
+  .city-input::placeholder {
+    font-size: 16px;
+  }
+
+  .get-weather-button {
+    font-size: 15px !important;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-top: 10px;
+  }
+
+  .month-and-year {
+    font-size: 18px !important;
+  }
+
+  .prev-next-container button {
+    font-size: 22px !important;
+  }
+
+  .jump-to-container * {
+    font-size: 15px !important;
+  }
+
+  .reminder-label {
+    border-radius: 8px !important;
+    font-size: 18px !important;
+  }
+
+  .event-inputs-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-inputs-container * {
+    font-size: 14px !important;
+  }
+
+  .event-inputs-container input::placeholder {
+    font-size: 14px;
+  }
+
+  .event-date-and-title-input-container {
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 5px;
+  }
+
+  .event-added-text {
+    font-size: 14px !important;
+  }
+
+  .has-reminder::after {
+    top: 6px;
+    right: 3px;
+  }
+
+  .reminders * {
+    font-size: 14px !important;
+  }
+
+  .reminder {
+    flex-direction: column;
+    row-gap: 5px;
+  }
+}

@@ -83,7 +83,7 @@ export function renderReminders() {
               const reminderId = `${reminder.date+reminder.title+reminder.description}`;
               remindersHtml += `
                 <div class="reminder js-reminder">
-                  <div class="reminder-text"><span>${reminder.title}</span>&nbsp;<span>&#x2010;</span>&nbsp;${reminder.description}&nbsp;<span>&#x2010;</span>&nbsp;${reminder.date}</div>
+                  <div class="reminder-text"><span>${reminder.title}</span>&nbsp;<span>&#x2010;</span>&nbsp;${reminder.description}</div>
                   <button class="reminder-delete-button js-reminder-delete-button" data-button-id="${reminderId}">
                     Delete
                   </button>
@@ -118,7 +118,7 @@ export function renderNewRemindersOnAddButtonClicked() {
               const reminderId = `${reminder.date+reminder.title+reminder.description}`;
               remindersHtml += `
                 <div class="reminder js-reminder">
-                  <div class="reminder-text"><span>${reminder.title}</span>&nbsp;<span>&#x2010;</span>&nbsp;${reminder.description}&nbsp;<span>&#x2010;</span>&nbsp;${reminder.date}</div>
+                  <div class="reminder-text"><span>${reminder.title}</span>&nbsp;<span>&#x2010;</span>&nbsp;${reminder.description}</div>
                   <button class="reminder-delete-button js-reminder-delete-button" data-button-id="${reminderId}">
                     Delete
                   </button>
