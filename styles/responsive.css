@@ -193,6 +193,7 @@
   }
 
   .weather-output,
+  .weather-output span,
   .weather-output div,
   .weather-output div span {
     font-size: 18px !important;
@@ -258,5 +259,149 @@
 
   .reminders * {
     font-size: 16px !important;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768.02px) and (max-width: 992px) {
+  * {
+    font-size: 16px !important;
+  }
+
+  .hero {
+    grid-template-columns: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    padding: 30px 20px 30px 20px !important;
+  }
+
+  .left,
+  .right {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .left {
+    border: none !important;
+    row-gap: 10px;
+  }
+
+  .today-date {
+    font-size: 40px !important;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .clock {
+    padding: 15px 15px 20px 15px;
+  }
+
+  .clock span {
+    font-size: 55px !important;
+  }
+
+  .clock span::after {
+    font-size: 18px;
+  }
+
+  .weather {
+    padding-bottom: 10px;
+  }
+
+  .city-selector-label {
+    font-size: 30px !important;
+    border-radius: 8px !important;
+  }
+
+  .city-input {
+    padding: 6px 14px;
+    margin-top: 4px;
+    font-size: 22px !important;
+  }
+
+  .city-input::placeholder {
+    font-size: 22px !important;
+  }
+
+  .get-weather-button {
+    font-size: 20px !important;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-top: 10px;
+  }
+
+  .weather-output,
+  .weather-output span,
+  .weather-output div,
+  .weather-output div span {
+    font-size: 24px !important;
+  }
+
+  .month-and-year {
+    font-size: 36px !important;
+  }
+
+  .prev-next-container button {
+    font-size: 40px !important;
+  }
+
+  th {
+    font-size: 24px !important;
+  }
+
+  td {
+    font-size: 22px !important;
+  }
+
+  .jump-to-container * {
+    font-size: 20px !important;
+  }
+
+  .reminder-section h2,
+  .reminder-section h3 {
+    font-size: 24px !important;
+  }
+
+  .reminder-label {
+    border-radius: 8px !important;
+    font-size: 30px !important;
+  }
+
+  .event-inputs-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-inputs-container * {
+    font-size: 20px !important;
+  }
+
+  .event-inputs-container input::placeholder {
+    font-size: 20px;
+  }
+
+  .event-date-and-title-input-container {
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 5px;
+  }
+
+  .event-added-text {
+    font-size: 20px !important;
+  }
+
+  .has-reminder::after {
+    top: 5px;
+    right: 5px;
+  }
+
+  .reminders {
+    font-size: 18px !important;
+  }
+
+  .reminders * {
+    font-size: 18px !important;
   }
 }
