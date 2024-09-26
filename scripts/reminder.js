@@ -125,6 +125,8 @@ export function renderNewRemindersOnAddButtonClicked() {
                 </div>
               `
               reminders.innerHTML = remindersHtml;
+
+              cell.click();
             }
           });
         }
