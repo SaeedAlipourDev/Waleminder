@@ -166,6 +166,12 @@
     font-size: 14px;
   }
 
+  .weather-section {
+    width: fit-content;
+    padding-left: 40px;
+    padding-right: 40px;
+  } 
+
   .weather {
     padding-bottom: 10px;
   }
@@ -314,6 +320,12 @@
   .clock span::after {
     font-size: 18px;
   }
+
+  .weather-section {
+    width: fit-content;
+    padding-left: 40px;
+    padding-right: 40px;
+  } 
 
   .weather {
     padding-bottom: 10px;
@@ -469,6 +481,12 @@
     bottom: -12px;
   }
 
+  .weather-section {
+    width: fit-content;
+    padding-left: 40px;
+    padding-right: 40px;
+  } 
+
   .weather {
     padding-bottom: 10px;
   }
@@ -575,5 +593,165 @@
 
   .reminders * {
     font-size: 20px !important;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200.02px) and (max-width: 1440px) {
+  * {
+    font-size: 16px !important;
+  }
+
+  .hero {
+    grid-template-columns: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    padding: 30px 20px 30px 20px !important;
+  }
+
+  .left,
+  .right {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .left {
+    border: none !important;
+    row-gap: 10px;
+  }
+
+  .today-date {
+    font-size: 60px !important;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .clock {
+    padding: 15px 15px 20px 15px;
+  }
+
+  .clock span {
+    font-size: 72px !important;
+  }
+
+  .clock span::after {
+    font-size: 24px;
+    bottom: -14px;
+  }
+
+  .weather-section {
+    width: fit-content;
+    padding-left: 40px;
+    padding-right: 40px;
+  } 
+
+  .weather {
+    padding-bottom: 10px;
+  }
+
+  .city-selector-label {
+    font-size: 44px !important;
+    border-radius: 8px !important;
+  }
+
+  .city-input {
+    padding: 8px 14px;
+    margin-top: 4px;
+    font-size: 32px !important;
+  }
+
+  .city-input::placeholder {
+    font-size: 32px !important;
+  }
+
+  .city-list {
+    width: 433px;
+  }
+
+  ul,
+  ul * {
+    font-size: 32px !important;
+  }
+
+  .get-weather-button {
+    font-size: 30px !important;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-top: 10px;
+  }
+
+  .weather-output,
+  .weather-output span,
+  .weather-output div,
+  .weather-output div span {
+    font-size: 36px !important;
+  }
+
+  .month-and-year {
+    font-size: 50px !important;
+  }
+
+  .prev-next-container button {
+    font-size: 58px !important;
+  }
+
+  th {
+    font-size: 34px !important;
+  }
+
+  td {
+    font-size: 32px !important;
+  }
+
+  .jump-to-container * {
+    font-size: 30px !important;
+  }
+
+  .reminder-section h2,
+  .reminder-section h3 {
+    font-size: 30px !important;
+  }
+
+  .reminder-label {
+    border-radius: 8px !important;
+    font-size: 42px !important;
+  }
+
+  .event-inputs-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-inputs-container * {
+    font-size: 28px !important;
+  }
+
+  .event-inputs-container input::placeholder {
+    font-size: 28px;
+  }
+
+  .event-date-and-title-input-container {
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 5px;
+  }
+
+  .event-added-text {
+    font-size: 28px !important;
+  }
+
+  .has-reminder::after {
+    top: 9px;
+    right: 9px;
+  }
+
+  .reminders {
+    font-size: 22px !important;
+  }
+
+  .reminders * {
+    font-size: 22px !important;
   }
 }
