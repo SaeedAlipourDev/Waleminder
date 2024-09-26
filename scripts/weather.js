@@ -7,11 +7,11 @@ const getWeatherButton = document.getElementById('get-weather');
 export const weatherOutput = document.getElementById('weather-output');
 
 function filterCities() {
-  const input = cityInput.value.toLowerCase();
+  const input = cityInput.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
   cityList.innerHTML = '';
 
   if (input) {
-    const filteredCities = cities.filter(city => city.toLowerCase().includes(input));
+    const filteredCities = cities.filter(city => city.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(input));
     
     filteredCities.forEach(city => {
       const li = document.createElement('li');
