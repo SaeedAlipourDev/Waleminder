@@ -14,7 +14,7 @@ setInterval(() => {
 
 export function setColorsBasedOnMonth() {
   const today = dayjs();
-  const monthInDigits = Number(today.format('M'));
+  const monthInDigits = /*Number(today.format('M'));*/ 3;
   const backgroundElement = document.querySelector('.js-hero');
   const dateElement = document.querySelector('.js-today-date');
   const clockNums = document.querySelectorAll('.js-clock-color');
@@ -30,6 +30,8 @@ export function setColorsBasedOnMonth() {
   const calendarSection = document.querySelector('.js-calendar-section');
   const remindersection = document.querySelector('.js-reminder-section');
   const eventInputsContainer = document.querySelector('.js-event-inputs-container');
+  const header = document.querySelector('header');
+  const headerSpans = header.querySelectorAll('span');
 
   const backgrounds = [
     null, // Placeholder for index 0
@@ -85,7 +87,7 @@ export function setColorsBasedOnMonth() {
   weatherLabel.style.borderRadius = '10px';
   [calendarPrevButton, calendarNextButton].forEach((button) => {
     button.style.border = `3px solid ${colors[monthInDigits]}`;
-    button.style.backgroundColor = `${colors[monthInDigits]}`;
+    button.style.backgroundColor = colors[monthInDigits];
   });
   reminderLabel.style.borderLeft = `3px solid ${colors[monthInDigits]}`;
   reminderLabel.style.borderRight = `3px solid ${colors[monthInDigits]}`;
@@ -96,6 +98,9 @@ export function setColorsBasedOnMonth() {
   remindersection.style.borderTop = `3px solid ${colors[monthInDigits]}`;
   remindersection.style.borderBottom = `3px solid ${colors[monthInDigits]}`;
   eventInputsContainer.style.borderBottom = `3px solid ${colors[monthInDigits]}`;
+  headerSpans.forEach((span) => {
+    span.style.color = colors[monthInDigits];
+  });
 }
 
 function renderHeaderDate () {

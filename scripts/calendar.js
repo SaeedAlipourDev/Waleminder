@@ -106,7 +106,7 @@ export function renderCalendarTableBody() {
   const currentMonth = today.month(); 
   const currentYear = today.year(); 
   const todayForColors = dayjs();
-  const monthInDigits = Number(todayForColors.format('M'));
+  const monthInDigits = /*Number(todayForColors.format('M'));*/ 3;
   const colors = [
     null, // Placeholder for index 0
     '#4682B4', // January
@@ -254,7 +254,7 @@ function makeJumpToDropdownsInteractive() {
 
 export function renderThemeColors() {
   const todayForColors = dayjs();
-  const monthInDigits = Number(todayForColors.format('M'));
+  const monthInDigits = /*Number(todayForColors.format('M'));*/ 3;
   const colors = [
     null, // Placeholder for index 0
     '#4682B4', // January

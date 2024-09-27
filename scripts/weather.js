@@ -102,7 +102,7 @@ document.querySelector('body')
 
 function renderThemeColorsForWeatherOutput() {
   const today = dayjs();
-  const monthInDigits = Number(today.format('M'));
+  const monthInDigits = /*Number(today.format('M'));*/ 3;
   const colors = [
     null, // Placeholder for index 0
     '#4682B4', // January
