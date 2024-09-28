@@ -14,7 +14,7 @@ setInterval(() => {
 
 export function setColorsBasedOnMonth() {
   const today = dayjs();
-  const monthInDigits = /*Number(today.format('M'));*/ 3;
+  const monthInDigits = Number(today.format('M'));
   const backgroundElement = document.querySelector('.js-hero');
   const dateElement = document.querySelector('.js-today-date');
   const clockNums = document.querySelectorAll('.js-clock-color');
@@ -98,6 +98,7 @@ export function setColorsBasedOnMonth() {
   remindersection.style.borderTop = `3px solid ${colors[monthInDigits]}`;
   remindersection.style.borderBottom = `3px solid ${colors[monthInDigits]}`;
   eventInputsContainer.style.borderBottom = `3px solid ${colors[monthInDigits]}`;
+  header.style.borderBottom = `3px solid ${colors[monthInDigits]}`;
   headerSpans.forEach((span) => {
     span.style.color = colors[monthInDigits];
   });
