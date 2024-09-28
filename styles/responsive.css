@@ -117,7 +117,7 @@
   }
 
   .event-added-text {
-    font-size: 14px !important;
+    font-size: 12px !important;
   }
 
   .has-reminder::after {
@@ -841,5 +841,12 @@
 
   .reminders * {
     font-size: 22px !important;
+  }
+}
+
+/* setting margin right for reminder texts for screens larger than 600px: */
+@media only screen and (min-width: 600.02px) {
+  .reminder-text {
+    margin-right: 20px;
   }
 }

@@ -257,7 +257,6 @@ table, th, td {
   text-align: justify;
   display: flex;
   flex-direction: column;
-  row-gap: 8px;
 }
 
 .reminder {
@@ -265,11 +264,12 @@ table, th, td {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 2px solid rgb(190, 190, 190);
 }
 
 .reminder-text {
   font-weight: 500;
-  margin-right: 8px;
 }
 
 .reminder-text span {
