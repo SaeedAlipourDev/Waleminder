@@ -10,14 +10,14 @@
 .today-date {
   background-color: white;
   font-weight: 500;
-  font-size: 36px;
+  font-size: 42px;
   padding: 20px;
   border-radius: 10px;
 }
 
 .clock {
   font-weight: 500;
-  font-size: 48px;
+  font-size: 52px;
   background-color: white;
   padding: 20px 20px 30px 20px;
   border-radius: 10px;
