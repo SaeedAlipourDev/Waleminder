@@ -101,7 +101,9 @@ table, th, td {
 .year-selector {
   border: 2px solid #bebebe;
   background-color: white;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
   padding: 1px 6px;
   cursor: pointer;
