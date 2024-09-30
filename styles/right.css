@@ -199,15 +199,15 @@ table, th, td {
 .event-inputs-container {
   display: grid;
   grid-template-rows: 1fr 1fr;
-  row-gap: 5px;
+  row-gap: 10px;
   width: 100%;
-  padding-bottom: 8px;
+  padding-bottom: 10px;
 }
 
 .event-inputs-container input {
   border-style: solid;
   border-radius: 6px;
-  padding: 2px 8px;
+  padding: 6px 8px 3px 8px;
   font-weight: 500;
   font-size: 16px;
 }
@@ -225,15 +225,39 @@ table, th, td {
   display: grid;
   grid-template-columns: 1fr 3fr;
   column-gap: 5px;
+  position: relative;
+}
+
+.title-character-counter {
+  background-color: white;
+  border-radius: 5px;
+  padding: 0px 6px;
+  font-size: 12px;
+  position: absolute;
+  top: -10.3px;
+  left: 90%;
+  transform: translateX(-10%);
 }
 
 .event-description-container {
   display: flex;
   column-gap: 5px;
+  position: relative;
 }
 
 .event-description-container input {
   width: 100%;
+}
+
+.description-character-counter {
+  background-color: white;
+  border-radius: 5px;
+  padding: 0px 6px;
+  font-size: 12px;
+  position: absolute;
+  top: -10px;
+  left: 80%;
+  transform: translateX(-20%);
 }
 
 .event-description-container button {

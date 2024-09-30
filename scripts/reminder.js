@@ -190,3 +190,34 @@ export function renderReminderCellsDots() {
     }
   });
 }
+
+function handleCharacterCounters () {
+  const titleInput = document.querySelector('.js-event-title-input');
+  const titleCharCounter = document.querySelector('.js-title-character-counter');
+  const descriptionInput = document.querySelector('.js-event-description-input');
+  const descriptionCharCounter = document.querySelector('.js-description-character-counter');
+
+  titleInput.addEventListener('input', () => {
+    const charCount = titleInput.value.length;
+    titleCharCounter.querySelector('span').textContent = charCount;
+
+    if (charCount === 50) {
+      titleCharCounter.style.color = 'red';
+    } else {
+      titleCharCounter.style.color = ''; 
+    }
+  });
+
+  descriptionInput.addEventListener('input', () => {
+    const charCount = descriptionInput.value.length;
+    descriptionCharCounter.querySelector('span').textContent = charCount;
+
+    if (charCount === 150) {
+      descriptionCharCounter.style.color = 'red';
+    } else {
+      descriptionCharCounter.style.color = '';
+    }
+  });
+}
+
+handleCharacterCounters();
